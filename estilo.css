@@ -12,14 +12,14 @@ th, td { border-bottom: 1px solid #ddd; padding: 10px; text-align: left;}
 
 .banner{
   background:linear-grandient(rgba(0,85,153,0.8),rgba(0,85,153,0.8)),url('imagens\senai.png');
-  background-size: cover;
+  background-size:cover;
   color:white;
   padding:30px 20px;
-  test-align: center;
-  margin-botton: 10px;
+  test-align:center;
+  margin-bottom: 10px;
 }
 
-.banner h1 {
+.banner h1{
   margin:0;
   font-size: 2.5rem;
 }
