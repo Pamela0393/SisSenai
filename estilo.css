@@ -16,16 +16,16 @@ th, td { border-bottom: 1px solid #ddd; padding: 10px; text-align: left;}
   color:white;
   padding:30px 20px;
   test-align:center;
-  margin-bottom: 10px;
+  margin-bottom:10px;
 }
 
-.banner h1{
+.bannerh1{
   margin:0;
   font-size: 2.5rem;
 }
 
 /* Estilo do Rodapé*/
-.rodapé {
+.rodape {
   background-color: #333;
   color: white;
   text-align: center;
