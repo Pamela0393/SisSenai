@@ -51,12 +51,12 @@
       .then(produtos=>{
         const corpoTabela = document.getElementByld('lista-produtos');
         produtos.forEach(c=>{
-          corpoTabela.innerHTML +='
+          corpoTabela.innerHTML +=`
             <tr>
             <td>${c.descrição}</td>
               <td>${c.preço}</td>
             <td>${c.estoque}</td>
-        </tr>';
+        </tr>`;
       });
       });
     </script>
