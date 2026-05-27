@@ -52,12 +52,12 @@
       .then(clientes=>{
         const corpoTabela = document.getElementByld('lista-clientes');
         clientes.forEach(c=>{
-          corpoTabela.innerHTML +='
+          corpoTabela.innerHTML +=`
             <tr>
             <td>${c.nome}</td>
               <td>${c.cpf}</td>
             <td>${c.telefone}</td>
-        </tr>';
+        </tr>`;
       });
       });
     </script>
