@@ -71,8 +71,34 @@
           data.forEach(c=> selC.innerHTML += `<option value="${c.id}">{c.nome}</option>`);
         });
       };
-      function adicionarItem(){
+      function adicionarItem(){ 
         const pld = parselnt(document.getElementByld('selProduto').value);
+        const qtd = parselnt(document.getElementByld('inpQtd).value);
+        const produto = window.listaProdutos.find(p=.id===pld);
+        if(produto) {
+          const subtotal = produto.preco*qtd;
+          carrinho.push({id: produto.id produto.descricao, preço: produto.preco, qtd:qtd});
+          totalGeral+=subtotal;
+          atualizarGrade();
+        }else{
+           alert("Selecione um produto!");
+        }
+      }
+      function atualizaGrade(){
+         const corpo = document.querySelector('#tabelaItens tbody');
+        corpo.innerHTML ="";
+        carrinho.forEach(item=>{
+          corpo.innerHTML += `<tr><td>$item.desc}</td><td>${item.qtd}</td><td>R$ ${item.preco.toFixed(2)}</td><td>R$ ${(item.qtd*item.preco).toFixed(2)}</td></tr>`;
+        });
+        document.getElementByld('txtTotal').innerText = `Total: R$ $ {totalGeral.toFixed(2)}´;
+        }
+        function finalizarVenda(){
+        const cld = document.getElementByld('selCliente').value;
+        if(!cld ||carrinho.length ===0)return alert("Selecione cliente e itens!");
+        cosnt dadosVenda = {cliente_id: cld, totalGeral, itens:carrinho};
+        fetch('/finalizar-venda',{
+        method:'POST' ,
+        headers:{'Content-Type':application/json'},
       
     </script>
         
