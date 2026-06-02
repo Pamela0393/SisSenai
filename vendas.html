@@ -99,6 +99,23 @@
         fetch('/finalizar-venda',{
         method:'POST' ,
         headers:{'Content-Type':application/json'},
-      
-    </script>
+        body:JSON.estringify(dadosVenda)
+        })
+        .then(res=>json())
+        .then(resposta=>{
+         if(resposta.success){
+         alert('Venda registrada com sucesso!');
+          widow.location.href='consulta_vendas.html';// Vai direto para consulta após vender
+          }
+          });
+          }
+          </script>
+  </body>  
+  <fooster class="rodape">
+    <div class="container-rodape">
+      <p>&;2026 SisSenai - Sistema de Gestão Educacional</p>
+      <p>Desenvolvido para fins didáticos - Unidade SENAI Capanema/PR</p>
+    </div>  
+  </fooster>  
+</html>
         
