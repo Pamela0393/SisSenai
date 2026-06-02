@@ -31,4 +31,15 @@ res.redirect('/clientes.html');
 app.get('/listar-clientes',(req,res)=>{
 db.all("SELECT*FROM clientes",[],(err,rows)=>{
 if(err)return res.status(500).json(err);
+  res.json(rows);
+});
+});
+
+// Iniciar Servidor
+const PORT =3000;
+app.listen(PORT,()=>{
+  console.log(`=========================================`);
+  console.log(`SISSENAI RODANDO EM:http://localhost:${PORT}`);
+  console.log(`=========================================`)
+});
 
