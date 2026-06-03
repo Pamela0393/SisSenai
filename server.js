@@ -5,8 +5,8 @@ const app = express();
 
 //Configurações do servidor
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.json()): //Necessário para o carrinho de compras(JSON)
-app.use(express.static(.)): // Serve seus arquivos HTML,CSS e imagens
+app.use(express.json()); //Necessário para o carrinho de compras(JSON)
+app.use(express.static(.)); // Serve seus arquivos HTML,CSS e imagens
 
 // Conexão com o Banco de Dados
 const db=new sqlite3.Database('/sissenai.db');
