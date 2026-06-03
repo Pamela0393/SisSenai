@@ -12,7 +12,7 @@ app.use(express.static('.')); // Serve seus arquivos HTML,CSS e imagens
 const db=new sqlite3.Database('/sissenai.db');
 
 // Inicialização das Tabelas(cria apenas se não existirem)
-db.seriaçize(()=>{
+db.serialize(()=>{
 // Tabela de Clientes
 db.run(´CREATE TABLE IF NOT EXISTS cliente (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
