@@ -38,6 +38,7 @@
                         <th>Nome</th>
                         <th>CPF/CNPJ</th>
                         <th>Telefone</th>
+						<th>Ações</th><!-- Coluna de Ações adicionada -->
                     </tr>
                 </thead>
                 <tbody id="lista-clientes">
@@ -47,6 +48,8 @@
     </div>
 
     <script>
+		// Função para carregar os clientes e desenhar os botões de ação|
+		function carregarClientes(){
         fetch('/listar-clientes')
             .then(res => res.json())
             .then(clientes => {
@@ -57,6 +60,11 @@
                             <td>${c.nome}</td>
                             <td>${c.cpf}</td>
                             <td>${c.telefone}</td>
+							<td>
+							<button onclick="prepararEdicao(${c.id}, '${c.nome}, '${c.cpf}, '${c.telefone}')"
+							style="width:auto;background:orange;padding:5px 10px;margin-right:5px;">✏️</button>
+							<button onclick="excluirClientes(${c.id})"
+							style=
                         </tr>`;
                 });
             });
