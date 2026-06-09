@@ -169,8 +169,7 @@ app.get('/detalhes-venda/:id', (req, res) => {
         res.json(rows);
     });
 });
-//***NOVA ROTA:Alterar clientes existente ***
-app.put('/alterar-cliente
+
 // Iniciar Servidor
 const PORT = 3000;
 app.listen(PORT, () => {
