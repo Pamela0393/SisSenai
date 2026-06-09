@@ -71,7 +71,7 @@ app.put('/alterar-cliente/:id',(req,res)=>{
 	const{nome, cpf, telefone} = req.body;
 	const sql = `UPDATE clientes SET nome = ?, cpf = ?, telefone = ? WHERE id = ?`;
 	db.run(sql,[nome,cpf,telefone,id], (err) =>{
-		if (err) return res.status(500).json({error:err:message});
+		if (err) return res.status(500).json({error:err.message});
 		res.json({success:true});
 	});
 });
@@ -79,7 +79,7 @@ app.put('/alterar-cliente/:id',(req,res)=>{
 app.delete('/excluir-cliente/:id', (req,res)=>{
 	const {id} = req.params;
 	db.run(`DELETE FROM clientes WHERE id = ? `[id], (err) => {
-		if (err) return res.status(500).json({err.message});
+		if (err) return res.status(500).json({error:err.message});
 	res.json({success:true});
 });
 });
