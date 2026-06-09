@@ -34,3 +34,21 @@
 
     <div id="card-detalhes" class="card" style="margin-top: 20px; display: none; Border-top: 5px solid#005599;">
       <h2>Detalhes da Venda#<span id="num-venda"></span>(itens) </h2>
+      <table>
+        <thead>
+          <tr><th>Produto</th><th>Qtd</th><Th>Preço Unit.</Th><th>Subtotal</th></tr>
+        </thead>  
+        <tbody id="lista-itens-detalhe"></tbody>  
+      </table>  
+    </div>  
+  </div>  
+
+    <script>
+      window.onload = () => {
+        fetch('/listar-vendas').then(res=>res.json()).then(vendas=>{
+          const corpo = document.getElementByld('lista-vendas-consulta');
+          vendas.forEach(v =>{
+            corpo.innerHTML +=`
+            <tr>
+            <td>${v.id}</td>
+            <td>$
