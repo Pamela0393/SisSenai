@@ -51,4 +51,39 @@
             corpo.innerHTML +=`
             <tr>
             <td>${v.id}</td>
-            <td>$
+            <td>${v.data}</td>
+            <td>${v.nome_cliente}</td>
+            <td>R$ ${v.total.toFixed(2))}</td>
+                     <td><button onclick="verDetalhes(${v.id})"style="padding:5px">Ver Itens</button></td>
+                     </tr`;
+          });
+        });
+      };
+      function verDetalhes(idVenda){
+        fetch(`/detalhes-venda/${idVenda}`).then(res=>res.json()).then(itens =>{
+          document.getElementByld('card-detalhes').style.display='block';
+          document.getElementByld('num-venda').innerText=idVenda;
+          const corpo = document.getElementByld('lista-itens-detalhe');
+          corpo.innerHTML="";
+          itens.forEach(item=>{
+            corpo.innerHTML +=`
+            <tr>
+            <td>${item.descricao}</td>
+            <td>${item.quantidade}</td>
+            <td>R$ ${item.preco_unitario.toFixed(2)}</td>
+            <td>R$ ${(item.quantidade*item.preco_unitario).toFixed(2)}</td>
+            </tr>`;
+          });
+          widow.scrollTo(0, document.body.scrollHeight);
+        });
+      }
+    </script>
+  </body>  
+  <footer class="rodape">
+    <div class="container-rodape">
+      <p>&copy; 2026 SisSenai -Sistema de Gestão Educacional</p>
+      <p>Desenvolvimento para fins didáticos - Unidade SENAI Capanema/PR</p>
+    </div>  
+  </footer>  
+</html>  
+
