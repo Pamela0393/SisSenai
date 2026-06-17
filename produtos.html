@@ -48,6 +48,8 @@
     </div>
 
     <script>
+		 // Função para carregar os clientes e desenhar os botões de ação
+        function carregarProdutos()
         fetch('/listar-produtos')
             .then(res => res.json())
             .then(produtos => {
@@ -55,6 +57,7 @@
                 produtos.forEach(p => {
                     corpoTabela.innerHTML += `
                         <tr>
+						<td>${produtos}</td>
                             <td>${p.descricao}</td>
                             <td>${p.preco.toFixed(2)}</td>
                             <td>${p.estoque}</td>
