@@ -103,18 +103,39 @@ app.post('/salvar-produto', (req, res) => {
 app.get('/listar-produtos', (req, res) => {
     db.all("SELECT * FROM produtos", [], (err, rows) => {
         if (err) return res.status(500).json(err);
-        res.json(rows);
+        res.json(rows)
+    });
+});
+// *** NOVA ROTA: Alterar cliente existente ***
+app.put('/alterar-cliente/:id', (req, res) => {
+    const { id } = req.params;
+    const { nome, cpf, telefone } = req.body;
+    const sql = `UPDATE clientes SET nome = ?, cpf = ?, telefone = ? WHERE id = ?`;
+    
+    db.run(sql, [nome, cpf, telefone, id], (err) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ success: true });
     });
 });
 
-// --- ROTAS DE VENDAS ---
+// *** NOVA ROTA: Excluir produto ***
+app.delete('/excluir-produto/:id', (req, res) => {
+    const { id } = req.params;
+    db.run(`DELETE FROM produtos WHERE id = ?`, [id], (err) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ success: true });
+    });
+});
 
-// Finalizar Venda (Grava Mestre e Detalhes)
-app.post('/finalizar-venda', (req, res) => {
-    const { cliente_id, total, itens } = req.body;
+
+// --- ROTAS DE PRODUTOS ---
+
+// Finalizar Produtos (Grava Mestre e Detalhes)
+app.post('/finalizar-produto', (req, res) => {
+    const { produto_id, preco, estoque } = req.body;
     const data = new Date().toLocaleString('pt-BR');
 
-    db.run(`INSERT INTO vendas (cliente_id, data, total) VALUES (?, ?, ?)`, [cliente_id, data, total], function (err) {
+    db.run(`INSERT INTO vendas (produto_id, preco, estoque) VALUES (?, ?, ?)`, [produto_id, preco, estoque], function (err) {
         if (err) return res.status(500).json(err);
 
         const vendaId = this.lastID;
